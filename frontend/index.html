@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | ESTOQUE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="login-box">
+        <h1>ESTOQUE</h1>
+        <h2>Entre</h2>
+
+        <p id="feedback" style="display: none; font-size: 13px; margin-bottom: 15px; font-weight: bold;"></p>
+
+        <div class="form-group">
+            <label>E-mail</label>
+            <input type="email" id="email" placeholder="Insira seu e-mail cadastrado">
+        </div>
+
+        <div class="form-group password-container">
+    <label>Senha</label>
+    <input type="password" id="senha" placeholder="Insira sua senha">
+    <span class="toggle-icon" onclick="toggleSenha()">👁</span>
+    <a href="#" class="forgot-password">Esqueceu a senha?</a>
+        </div>
+
+        <button class="btn-entrar" onclick="fazerLogin()">Entrar</button>
+        <button class="btn-criar" onclick="window.location.href='cadastro.html'">Criar Conta</button>
+    </div>
+
+    <script>
+        const feedback = document.getElementById('feedback');
+
+        function mostrarMensagem(texto, cor = "red") {
+            feedback.innerText = texto;
+            feedback.style.color = cor;
+            feedback.style.display = 'block';
+            setTimeout(() => { feedback.style.display = 'none'; }, 5000);
+        }
+
+        async function fazerLogin() {
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+
+            if (!email || !senha) {
+                mostrarMensagem("Preencha todos os campos!");
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:3000/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, senha })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                   
+                    setTimeout(() => {
+                        window.location.href = "catalogos.html"; 
+                    }, 1500);
+                } else {
+                    mostrarMensagem(data.mensagem || "E-mail ou senha incorretos");
+                }
+            } catch (error) {
+                mostrarMensagem("Erro ao conectar com o servidor.");
+            }
+        }
+        function toggleSenha() {
+    const inputSenha = document.getElementById('senha');
+    const icone = document.querySelector('.toggle-icon');
+
+    if (inputSenha.type === 'password') {
+        inputSenha.type = 'text';
+        icone.innerText = '🙈'; // Muda o ícone quando a senha aparece
+    } else {
+        inputSenha.type = 'password';
+        icone.innerText = '👁'; // Volta o ícone original
+    }
+}
+    </script>
+</body>
+</html>

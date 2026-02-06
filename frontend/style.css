@@ -1,0 +1,165 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Logo "ESTOQUE" idêntico à imagem */
+h1 {
+    font-size: 32px;
+    letter-spacing: 6px; /* Aumentado para parecer mais com a marca */
+    font-weight: 600;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    color: #000;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 25px;
+    font-weight: 400;
+    color: #000;
+}
+
+/* Novo: Estilo para mensagens de erro/sucesso (substitui o alert) */
+#feedback {
+    font-size: 13px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 2px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 6px;
+    font-weight: 700;
+    color: #000;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #dcdcdc;
+    border-radius: 2px;
+    font-size: 14px;
+    background-color: #fafafa;
+    transition: border 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #000;
+}
+
+/* Container da senha com ícone visual */
+.password-container {
+    position: relative;
+}
+
+/* Espaçamento extra no input de senha para não sobrepor o ícone */
+.password-container input {
+    padding-right: 45px;
+}
+
+/* Simulação do ícone de olho da imagem original */
+.password-container::after {
+    content: '👁'; 
+    position: absolute;
+    right: 15px;
+    top: 38px; /* Ajustado para alinhar com o centro do input abaixo da label */
+    font-size: 18px;
+    color: #666;
+    cursor: pointer;
+}
+
+.forgot-password {
+    display: block;
+    text-align: right;
+    font-size: 12px;
+    color: #000;
+    text-decoration: underline;
+    margin-top: 8px;
+    font-weight: 500;
+}
+
+/* Botões com estilo da marca */
+.btn-entrar {
+    width: 100%;
+    padding: 16px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 30px;
+    letter-spacing: 1.5px;
+    transition: opacity 0.3s;
+}
+
+.btn-criar {
+    width: 100%;
+    padding: 16px;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #000;
+    border-radius: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 12px;
+    letter-spacing: 1.5px;
+    transition: background-color 0.3s;
+}
+
+.btn-entrar:hover {
+    opacity: 0.8;
+}
+
+.btn-criar:hover {
+    background-color: #f5f5f5;
+}
+.password-container {
+    position: relative;
+}
+
+.toggle-icon {
+    position: absolute;
+    right: 15px;
+    top: 38px; /* Ajuste conforme a altura da sua label */
+    font-size: 18px;
+    color: #666;
+    cursor: pointer;
+    user-select: none; /* Evita selecionar o texto do ícone ao clicar rápido */
+}
+
+/* Removemos o ::after antigo que era só visual e não clicável */
+.password-container::after {
+    display: none;
+}
